@@ -94,19 +94,21 @@
 
     const findFloorMoving = (elevator, goingUp) => {
       const currentFloor = elevator.currentFloor();
-      return findFloor(elevator, goingUp, (floor) => {
-        return floor > currentFloor;
-      }, (floor) => {
-        return floor < currentFloor;
-      });
+      return findFloor(
+        elevator,
+        goingUp,
+        (floor) => (floor > currentFloor),
+        (floor) => (floor < currentFloor)
+      );
     };
 
     const findFloorStopped = (elevator, goingUp) => {
-      return findFloor(elevator, goingUp, (floor) => {
-        return true;
-      }, (floor) => {
-        return true;
-      });
+      return findFloor(
+        elevator,
+        goingUp,
+        (floor) => true,
+        (floor) => true
+      );
     };
 
     const findFloorToVisit = (elevator) => {
@@ -118,7 +120,8 @@
       let downFloor = findFloorMoving(elevator, false);
       if (isGoingUp(elevator) && upFloor >= 0) {
         return upFloor;
-      } else if (isGoingDown(elevator) && downFloor >= 0) {
+      }
+      if (isGoingDown(elevator) && downFloor >= 0) {
         return downFloor;
       }
 
@@ -129,14 +132,16 @@
         if (upFloor >= 0) {
           goUp(elevator);
           return upFloor;
-        } else if (downFloor >= 0) {
+        }
+        if (downFloor >= 0) {
           return downFloor;
         }
       } else {
         if (downFloor >= 0) {
           goDown(elevator);
           return downFloor;
-        } else if (upFloor >= 0) {
+        }
+        if (upFloor >= 0) {
           return upFloor;
         }
       }
@@ -199,6 +204,6 @@
     }
   },
   update: function(dt, elevators, floors) {
-    // We normally don't need to do anything here
+    // Don't do anything
   }
 }
