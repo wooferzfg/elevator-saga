@@ -174,9 +174,9 @@
     };
 
     const updateElevators = () => {
-      const sortedElevators = elevators.concat([]).sort((elevator) => {
-        return elevator.loadFactor();
-      });
+      const sortedElevators = elevators.concat([]).sort((elevator) => (
+        elevator.loadFactor()
+      ));
       for (let elevator of sortedElevators) {
         goToFloors(elevator);
       }
