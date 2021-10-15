@@ -175,7 +175,8 @@
 
     const updateElevators = () => {
       const sortedElevators = elevators.concat([]).sort((elevator) => (
-        elevator.loadFactor()
+        // Sort based on which elevators have the most available room
+        (elevator.loadFactor() - 1) * elevator.maxPassengerCount()
       ));
       for (let elevator of sortedElevators) {
         goToFloors(elevator);
