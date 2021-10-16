@@ -18,11 +18,15 @@
     const goUp = (elevator) => {
       const elevatorIndex = elevators.indexOf(elevator);
       elevatorDirections[elevatorIndex] = "up";
+      elevator.goingUpIndicator(true);
+      elevator.goingDownIndicator(false);
     };
 
     const goDown = (elevator) => {
       const elevatorIndex = elevators.indexOf(elevator);
       elevatorDirections[elevatorIndex] = "down";
+      elevator.goingDownIndicator(true);
+      elevator.goingUpIndicator(false);
     };
 
     const setState = (elevator, state) => {
